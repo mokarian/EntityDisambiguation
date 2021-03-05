@@ -1,0 +1,15 @@
+# Pycharm
+.idea
+*venv/
+
+# Byte-compiled
+__pycache__/
+
+# vscode
+.vscode
+
+.python_packages
+
+groundtruth/speech/configs/tts*.*
+
+.ipynb_checkpoints

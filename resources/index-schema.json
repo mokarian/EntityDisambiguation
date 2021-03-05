@@ -1,0 +1,259 @@
+{
+  "name": "test",
+  "defaultScoringProfile": "",
+  "fields": [
+    {
+      "name": "id",
+      "type": "Edm.String",
+      "searchable": true,
+      "filterable": false,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": true,
+      "indexAnalyzer": "standard.lucene",
+      "searchAnalyzer": "standard.lucene",
+      "synonymMaps": []
+    },
+    {
+      "name": "standard_lucene",
+      "type": "Edm.String",
+      "searchable": true,
+      "filterable": false,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false,
+      "indexAnalyzer": "standard.lucene",
+      "searchAnalyzer": "standard.lucene",
+      "synonymMaps": []
+    },
+    {
+      "name": "phonetic",
+      "type": "Edm.String",
+      "searchable": true,
+      "filterable": false,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false,
+      "indexAnalyzer": "phonetic-analyzer",
+      "searchAnalyzer": "phonetic-analyzer",
+      "synonymMaps": []
+    },
+    {
+      "name": "edge_n_gram",
+      "type": "Edm.String",
+      "searchable": true,
+      "filterable": false,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false,
+      "indexAnalyzer": "edge-n-gram-analyzer",
+      "searchAnalyzer": "edge-n-gram-analyzer",
+      "synonymMaps": []
+    },
+    {
+      "name": "keyword",
+      "type": "Edm.String",
+      "searchable": true,
+      "filterable": false,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false,
+      "indexAnalyzer": "keyword-analyzer",
+      "searchAnalyzer": "keyword-analyzer",
+      "synonymMaps": []
+    },
+    {
+      "name": "letter",
+      "type": "Edm.String",
+      "searchable": true,
+      "filterable": false,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false,
+      "indexAnalyzer": "letter-analyzer",
+      "searchAnalyzer": "letter-analyzer",
+      "synonymMaps": []
+    },
+    {
+      "name": "ngram",
+      "type": "Edm.String",
+      "searchable": true,
+      "filterable": false,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false,
+      "indexAnalyzer": "ngram-analyzer",
+      "searchAnalyzer": "ngram-analyzer",
+      "synonymMaps": []
+    },
+    {
+      "name": "camelcase",
+      "type": "Edm.String",
+      "searchable": true,
+      "filterable": false,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false,
+      "indexAnalyzer": "camel-case-pattern-analyzer",
+      "searchAnalyzer": "camel-case-pattern-analyzer",
+      "synonymMaps": []
+    },
+    {
+      "name": "email",
+      "type": "Edm.String",
+      "searchable": true,
+      "filterable": false,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false,
+      "indexAnalyzer": "email-pattern-analyzer",
+      "searchAnalyzer": "email-pattern-analyzer",
+      "synonymMaps": []
+    },
+    {
+      "name": "stemming",
+      "type": "Edm.String",
+      "searchable": true,
+      "filterable": false,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false,
+      "indexAnalyzer": "stemming-analyzer",
+      "searchAnalyzer": "stemming-analyzer",
+      "synonymMaps": []
+    },
+    {
+      "name": "url_email",
+      "type": "Edm.String",
+      "searchable": true,
+      "filterable": false,
+      "retrievable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false,
+      "indexAnalyzer": "url-email-analyzer",
+      "searchAnalyzer": "url-email-analyzer",
+      "synonymMaps": []
+    },
+     {
+            "name": "text_microsoft",
+            "type": "Edm.String",
+            "searchable": true,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false,
+            "indexAnalyzer": null,
+            "searchAnalyzer": null,
+            "analyzer": "en.microsoft",
+            "synonymMaps": []
+        }
+  ],
+  "scoringProfiles": [],
+  "corsOptions": null,
+  "suggesters": [],
+  "analyzers": [
+    {
+      "@odata.type": "#Microsoft.Azure.Search.CustomAnalyzer",
+      "name": "phonetic-analyzer",
+      "tokenizer": "classic",
+      "tokenFilters": [
+        "lowercase",
+        "asciifolding",
+        "phonetic"
+      ],
+      "charFilters": []
+    },
+    {
+      "@odata.type": "#Microsoft.Azure.Search.CustomAnalyzer",
+      "name": "edge-n-gram-analyzer",
+      "tokenizer": "classic",
+      "tokenFilters": [
+        "lowercase",
+        "asciifolding",
+        "edge-n-gram_filter"
+      ],
+      "charFilters": []
+    },
+    {
+      "@odata.type": "#Microsoft.Azure.Search.CustomAnalyzer",
+      "name": "keyword-analyzer",
+      "tokenizer": "keyword_v2",
+      "tokenFilters": [
+        "lowercase",
+        "asciifolding"
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Azure.Search.CustomAnalyzer",
+      "name": "letter-analyzer",
+      "tokenizer": "letter",
+      "tokenFilters": [
+        "lowercase",
+        "asciifolding"
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Azure.Search.CustomAnalyzer",
+      "name": "ngram-analyzer",
+      "tokenizer": "classic",
+      "tokenFilters": [
+        "lowercase",
+        "asciifolding",
+        "n-gram_filter"
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Azure.Search.PatternAnalyzer",
+      "name": "camel-case-pattern-analyzer",
+      "pattern": "([^\\p{L}\\d]+)|(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)|(?<=[\\p{L}&&[^\\p{Lu}]])(?=\\p{Lu})|(?<=\\p{Lu})(?=\\p{Lu}[\\p{L}&&[^\\p{Lu}]])"
+    },
+    {
+      "@odata.type": "#Microsoft.Azure.Search.PatternAnalyzer",
+      "name": "email-pattern-analyzer",
+      "pattern": "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
+    },
+    {
+      "@odata.type": "#Microsoft.Azure.Search.CustomAnalyzer",
+      "name": "stemming-analyzer",
+      "tokenizer": "stemming_tokenizer"
+    },
+    {
+      "@odata.type": "#Microsoft.Azure.Search.CustomAnalyzer",
+      "name": "url-email-analyzer",
+      "tokenizer": "uax_url_email"
+    }
+  ],
+  "tokenizers": [
+    {
+      "name": "stemming_tokenizer",
+      "@odata.type": "#Microsoft.Azure.Search.MicrosoftLanguageStemmingTokenizer"
+    }
+  ],
+  "tokenFilters": [
+    {
+      "name": "edge-n-gram_filter",
+      "@odata.type": "#Microsoft.Azure.Search.EdgeNGramTokenFilterV2",
+      "minGram": 2,
+      "maxGram": 20
+    },
+    {
+      "name": "n-gram_filter",
+      "@odata.type": "#Microsoft.Azure.Search.NGramTokenFilterV2",
+      "minGram": 4,
+      "maxGram": 6
+    }
+  ],
+  "charFilters": []
+}
