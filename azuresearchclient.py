@@ -5,7 +5,7 @@ import os
 import uuid
 
 import requests
-from src.utils import Utils
+from utils import Utils
 
 
 class AzureSearchClient:
@@ -14,7 +14,7 @@ class AzureSearchClient:
     """
 
     def __init__(self):
-        self.utils = Utils(os.path.join("../resources"))
+        self.utils = Utils(os.path.join("resources"))
         self.config = self.utils.get_config()
         self.endpoint = 'https://{}.search.windows.net/'.format(self.config["search"]["service_name"])
         self.api_version = '?api-version=2020-06-30'
@@ -53,9 +53,9 @@ class AzureSearchClient:
         """
         url = self.endpoint + "/indexes/" + index_name + "/docs/search" + self.api_version
         body = self.utils.create_azure_search_body(misspelled_name, fields)
-        body["name"] = index_name
         azure_response = requests.post(url, headers=self.headers,
                                        json=body)
+        print(azure_response)
         return self.utils.get_maximum_rank_from_azure_search_response(azure_response.json())
 
     def create_documents_payload(self):

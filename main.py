@@ -1,15 +1,15 @@
-from src.azuresearchclient import AzureSearchClient
-from src.constants import Constants
-from src.statistics import Statistics
+from azuresearchclient import AzureSearchClient
+from constants import Constants
+from statistics import Statistics
 
 if __name__ == "__main__":
     # Create Search Index
     AZURE = AzureSearchClient()
     # Create Search Index
-    AZURE.create_index()
+    AZURE.create_index("index222")
     # insert documents into the search index (corrected spelled names)
-    AZURE.insert_documents()
-
+    AZURE.insert_documents("index222")
+    #
     STATS = Statistics()
     # target fields to be searched
     FIELDS_SET = Constants.name_search_fields

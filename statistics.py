@@ -6,10 +6,8 @@ from enum import Enum
 from os import walk
 import pandas as pd
 
-from src.azuresearchclient import AzureSearchClient
-from src.constants import Constants
-from src.plots import create_plot
-from src.utils import Utils
+from constants import Constants
+from utils import Utils
 from matplotlib import pyplot as plt
 
 
@@ -175,6 +173,7 @@ class Statistics:
             data = []
             for i in range(0, len(misspelled_list)):
                 retrieved = search_engine.make_search(misspelled_list[i][0], list(subset))
+                print(retrieved)
                 expected = correct_list[i][0]
                 result = Statistics().mark_confusion_matrix(expected, retrieved).value
                 if result == Result.TP.value:
@@ -207,10 +206,10 @@ class Statistics:
     def read_generated_files_to_list():
         statistics = []
         f = []
-        for (dirpath, dirnames, filenames) in walk("../generated"):
+        for (dirpath, dirnames, filenames) in walk("generated"):
             f.extend(filenames)
             for a_file in filenames:
-                df = pd.read_csv(os.path.join("../generated", a_file))
+                df = pd.read_csv(os.path.join("generated", a_file))
                 fn = len(df.loc[df['result'] == 'FN'])
                 tp = len(df.loc[df['result'] == 'TP'])
                 tn = len(df.loc[df['result'] == 'TN'])
@@ -249,7 +248,7 @@ class Statistics:
                     xytext=(70, 200),
                     )
 
-        ax.annotate('F1 score: 0.74', xy=(422, 308),
+        ax.annotate('F1 score: 0.74', xy=(370, 220),
                     arrowprops=dict(facecolor='green', shrink=0.01),
                     xycoords='figure points',
                     xytext=(329, 100),
