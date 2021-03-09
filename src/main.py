@@ -22,5 +22,5 @@ if __name__ == "__main__":
     STATS.calculate_statistics(correct_list, misspelled_list, all_subsets, AZURE, True)
 
     # plot the results
-    f1_scores = STATS.generate_f1()
-    STATS.create_plot(f1_scores)
+    SCORES = STATS.generate_f1()
+    STATS.create_plot(SCORES)
