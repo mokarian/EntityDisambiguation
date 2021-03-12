@@ -68,3 +68,42 @@ STATS.create_plot(SCORES)
 ```
 
 ![plot](doc-resources/plot.png)
+
+### Experiment Result
+Now consider that there is a name in our search index : **Tom O'halleran**
+
+Our speech recognition or OCR extracted this text with an incorrect spelleing: **Tom O Halleran**
+
+We are experimenting to disambiguate this name with two set ups:
+- Default analyzer setup (**standard_lucene**)
+
+- Analyzer with best performance set up (**camelcase,url_email,text_microsoft**)
+
+#### Default analyzer experiment
+
+```python
+from azuresearchclient import AzureSearchClient
+
+AZURE = AzureSearchClient()
+AZURE.make_search("Tom O Halleran", ["standard_lucene"])
+```
+**Result:**
+```bash
+{'queryType': 'full', 'search': 'Tom O Halleran', 'searchFields': 'standard_lucene'}
+<Response [200]>
+'Tom Canada'
+```
+
+#### Analyzer with best performance experiment
+```python
+AZURE = AzureSearchClient()
+AZURE.make_search("Tom O Halleran", ["camelcase", "url_email", "text_microsoft"])
+```
+**Result:**
+```bash
+{'queryType': 'full', 'search': 'Tom O Halleran', 'searchFields': 'camelcase,url_email,text_microsoft'}
+<Response [200]>
+"Tom O'halleran"
+```
+
+We can see that default setting was not successful to retrieve the most relevant result.

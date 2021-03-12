@@ -53,6 +53,7 @@ class AzureSearchClient:
         """
         url = self.endpoint + "/indexes/" + index_name + "/docs/search" + self.api_version
         body = self.utils.create_azure_search_body(misspelled_name, fields)
+        print(body)
         azure_response = requests.post(url, headers=self.headers,
                                        json=body)
         print(azure_response)
